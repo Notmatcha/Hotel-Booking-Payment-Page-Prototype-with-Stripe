@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Booking Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Hotel Booking Payment</h1>
+    <p>Total Amount: <strong>SGD $1.99</strong></p>
+
+    <form id="payment-form">
+      <label for="card-element">Credit or Debit Card</label>
+      <div id="card-element"></div>
+
+      <button type="submit" id="submit-button">Pay Now</button>
+      <div id="payment-message"></div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
