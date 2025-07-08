@@ -3,7 +3,7 @@ const stripe = Stripe("pk_test_51RidTp09Hm6VCHXtcGjRbrAdCoCabLJssiPsixstWurIvIdO
 fetch("http://localhost:5000/create-payment-intent", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ amount: 199, currency: "sgd" })  // SGD 1.99
+  body: JSON.stringify({ amount: 199, currency: "sgd" })  // amount % 100 = SGD 1.99
 })
 .then(res => res.json())
 .then(data => {
