@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🔧 Setting up hotel-booking-stripe-demo project..."
+echo "Setting up hotel-booking-stripe-demo project..."
 
 # Check for Node.js and npm
 if ! command -v node &> /dev/null; then
