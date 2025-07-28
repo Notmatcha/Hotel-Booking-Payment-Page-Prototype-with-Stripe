@@ -1,9 +1,10 @@
+// Replace with your actual publishable key
 const stripe = Stripe("pk_test_51RidTp09Hm6VCHXtcGjRbrAdCoCabLJssiPsixstWurIvIdOogNjsjAsPdkaxPVOjjcFHE4Gz6c4kIuGFuFZkBpJ00OwQhJRpA");
 
 fetch("http://localhost:5000/create-payment-intent", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ amount: 199, currency: "sgd" })  // amount % 100 = SGD 1.99
+  body: JSON.stringify({ amount: 199 })  // SGD 1.99
 })
 .then(res => res.json())
 .then(data => {
@@ -22,6 +23,6 @@ fetch("http://localhost:5000/create-payment-intent", {
 
     document.getElementById("payment-message").textContent = error
       ? error.message
-      : "Payment successful!";
+      : "✅ Payment successful!";
   });
 });

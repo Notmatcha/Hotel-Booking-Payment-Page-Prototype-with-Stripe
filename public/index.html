@@ -11,46 +11,7 @@
     <h1>Hotel Booking Payment</h1>
     <p>Total Amount: <strong>SGD $1.99</strong></p>
 
-    <form id="payment-form"><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Hotel Checkout</title>
-</head>
-<body>
-  <h1>Book a Stay</h1>
-  <button id="checkout-button">Book Marina Bay Sands (SGD 499.00)</button>
-
-  <script>
-    document.getElementById("checkout-button").addEventListener("click", async () => {
-      try {
-        const response = await fetch("/create-checkout-session", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            name: "1-Night Stay at Marina Bay Sands",
-            price: 49900,  // in cents (SGD 499.00)
-            currency: "sgd"
-          })
-        });
-
-        if (response.redirected) {
-          window.location.href = response.url;
-        } else {
-          const data = await response.json();
-          alert("Error: " + data.error);
-        }
-      } catch (err) {
-        console.error("Fetch error:", err);
-        alert("Failed to create session");
-      }
-    });
-  </script>
-</body>
-</html>
-
+    <form id="payment-form">
       <label for="card-element">Credit or Debit Card</label>
       <div id="card-element"></div>
 
