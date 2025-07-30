@@ -24,11 +24,14 @@ app.use("/api/auth", authRoutes);
 
 // Stripe payment (optional)
 app.post("/create-payment-intent", async (req, res) => {
-  const { amount } = req.body;
+  const { amount, customerId } = req.body;
+  console.log("Creating payment intent for customer:", customerId);
+
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount * 100,
       currency: "sgd",
+      customer: customerId,
       automatic_payment_methods: { enabled: true },
     });
 
