@@ -14,3 +14,14 @@ prevent man in the middle attacks via https (not turned on due to dev)
 prevent brute force via rate limit and hashing
 prevent spam account via 2fa(not proper due to dev)
 prevent stealing of accnts via tokens
+ensure strong passwords(not turned on due to dev)
+
+
+Stuff to do:
+sign in (done)
+2fa(done)
+log in(done)
+payment(done)
+send confirmatino email
+purchase history
+delete user
