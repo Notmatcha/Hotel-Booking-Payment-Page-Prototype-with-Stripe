@@ -1,5 +1,5 @@
 backend
-npm install express mongoose cors dotenv jsonwebtoken bcryptjs stripe
+npm install express mongoose cors dotenv jsonwebtoken bcryptjs stripe cors
 npm i
 npm start
 
