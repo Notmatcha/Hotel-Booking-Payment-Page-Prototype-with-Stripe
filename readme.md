@@ -22,6 +22,7 @@ sign in (done)
 2fa(done)
 log in(done)
 payment(done)
-send confirmatino email
+send receipt email
 purchase history
 delete user
+add sessions/ session id (done)
