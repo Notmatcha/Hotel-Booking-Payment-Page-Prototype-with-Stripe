@@ -10,9 +10,9 @@ const paymentRoutes = require("./routes/paymentRoutes");
 
 const app = express();
 // app.use(helmet.hsts({
-//   maxAge: 31536000, // 1 year in seconds
-//   includeSubDomains: true, // Applies to subdomains
-//   preload: true // Allow inclusion in browser preload lists
+//   maxAge: 31536000, 
+//   includeSubDomains: true, 
+//   preload: true 
 // }));
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, 
