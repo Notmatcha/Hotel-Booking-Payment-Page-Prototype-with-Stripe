@@ -6,9 +6,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 exports.signup = async ({ name, email, phone, password }) => {
   const existingUser = await User.findOne({ email });
   if (existingUser) throw new Error("User already exists");
-  // if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
-  //   throw new Error("Password too weak");
-  // }
+  
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const customer = await stripe.customers.create({ name, email, phone });

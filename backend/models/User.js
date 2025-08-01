@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   phone: String,
   password: String,
   stripeCustomerId: String, 
+  address: String,
 });
 
 module.exports = mongoose.model("User", userSchema);
