@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const rateLimit = require('express-rate-limit');
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const profileRoutes = require('./routes/profRoutes');
 
 const app = express();
 // app.use(helmet.hsts({
@@ -30,6 +31,13 @@ const paymentLimiter = rateLimit({
 });
 app.use("/api/payments", paymentLimiter);
 
+const profileLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: 'Too many profile requests'
+});
+app.use('/api/profile', profileLimiter);
+
 app.use(cors());
 app.use(express.json());
 
@@ -43,6 +51,7 @@ mongoose
 
 app.use("/api/auth", authRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use('/api/profile', profileRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
