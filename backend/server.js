@@ -20,7 +20,15 @@ const authLimiter = rateLimit({
   message: 'Too many login attempts, please try again later',
   skipSuccessfulRequests: true
 });
+
 app.use('/api/auth/login', authLimiter); // prevent bruteforce
+
+const paymentLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: "Too many payment requests. Try again later."
+});
+app.use("/api/payments", paymentLimiter);
 
 app.use(cors());
 app.use(express.json());
