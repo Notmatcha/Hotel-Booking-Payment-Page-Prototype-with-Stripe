@@ -1,14 +1,13 @@
 const authService = require("../services/authService");
 const { authenticator } = require("otplib");
 const emailService = require("../services/emailService");
-const User = require("../models/User");
 const validate = require("../services/validate");
 const crypto = require('crypto');
 
 const tempUsers = new Map(); // Replace with Redis if needed
 
 exports.signup = async (req, res) => {
-  const { name, email, phone, password } = req.body;
+  const { name, email, phone, password, address } = req.body;
 
   try {
     await validate.validator({ name, phone, password });
@@ -17,7 +16,7 @@ exports.signup = async (req, res) => {
     authenticator.generate = () => "1234"; 
     const otp = authenticator.generate("any_secret"); //forcing it to be always be 1234
     const OTP_EXPIRY = 300000; //5 mins in miliseconds
-    tempUsers.set(email, { name, email, phone, password, otp, expiresAt: Date.now() + OTP_EXPIRY });
+    tempUsers.set(email, { name, email, phone, password, address, otp, expiresAt: Date.now() + OTP_EXPIRY });
 
     try {
       await emailService.sendOtp(email, otp);
@@ -59,6 +58,7 @@ exports.verifyOtp = async (req, res) => {
       email: tempUser.email,
       phone: tempUser.phone,
       password: tempUser.password,
+      address: tempUser.address,
     });
 
     tempUsers.delete(email);

@@ -9,6 +9,9 @@ exports.createPaymentIntent = async ({ amount, customerId }) => {
     currency: "sgd",
     customer: customerId,
     automatic_payment_methods: { enabled: true },
+    metadata: {  // Store the address line in metadata
+      billing_address: address
+    }
   });
 
   return paymentIntent.client_secret;
