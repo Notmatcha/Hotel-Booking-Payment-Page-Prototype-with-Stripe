@@ -4,9 +4,9 @@ const profController = require('../controllers/profController');
 const authenticateToken = require('../middleware/authMiddleware');
 
 // Profile routes
-router.get('/', authenticateToken, profController.getProfile);
-router.patch('/', authenticateToken, profController.updateProfile);
-router.delete('/', authenticateToken, profController.deleteAccount);
+router.get('/get', authenticateToken, profController.getProfile);
+router.patch('/patch', authenticateToken, profController.updateProfile);
+router.delete('/delete', authenticateToken, profController.deleteAccount);
 
 // Purchase history
 router.get('/history', authenticateToken, profController.getPurchaseHistory);

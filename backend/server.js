@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const rateLimit = require('express-rate-limit');
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
-const profileRoutes = require('./routes/profRoutes');
+const profRoutes = require('./routes/profRoutes');
 
 const app = express();
 // app.use(helmet.hsts({
@@ -38,7 +38,13 @@ const profileLimiter = rateLimit({
 });
 app.use('/api/profile', profileLimiter);
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000", // Your frontend URL
+  credentials: true
+}));
+
+
+
 app.use(express.json());
 
 mongoose
@@ -51,7 +57,9 @@ mongoose
 
 app.use("/api/auth", authRoutes);
 app.use("/api/payments", paymentRoutes);
-app.use('/api/profile', profileRoutes);
+app.use('/api/profile', profRoutes);
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
